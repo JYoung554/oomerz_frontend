@@ -16,6 +16,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case SET_USER_PROFILE:
       return { ...state, profileCard: action.payload }
+    default:
+      return state
   }
 }
 const Users = (props) => {

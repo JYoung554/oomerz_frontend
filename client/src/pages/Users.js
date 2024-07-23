@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../globals'
 import { PROFILE_CARDS_BY_HANDLE, SET_USER } from '../store/types'
 
