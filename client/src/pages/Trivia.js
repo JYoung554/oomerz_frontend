@@ -61,19 +61,6 @@ const Trivia = (props) => {
 
   const nextQuestion = trivia + 1
 
-  const resetGenStatus = async () => {
-    try {
-      await axios.put(`${BASE_URL}/home/${currentUser.id}`, {
-        genStatus: genText
-      })
-      setGenText('')
-
-      console.log(currentUser.id)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const postTrivia = async () => {
     try {
       const res = await axios.put(`${BASE_URL}/home/${profileCard.id}`, {
