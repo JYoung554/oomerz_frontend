@@ -1,19 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import { useState, useEffect, useReducer } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useReducer } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../globals'
 import {
   PROFILE_CARDS_BY_HANDLE,
-  SET_CURRENT_USER_DATA,
-  SET_PROFILE_CARD,
-  SET_CURRENT_USER,
   SET_USER,
-  GET_USER,
-  SET_USER_PROFILE,
-  SET_USER_PROFILES
+  SET_USER_PROFILE
 } from '../store/types'
-//import { user } from '../pages/Users'
 
 const iState = {
   profileCard: []
@@ -28,10 +22,8 @@ const Users = (props) => {
   const [state, dispatch] = useReducer(reducer, iState)
 
   const history = useNavigate()
-  const handle = useParams()
-  const { selectedUser, currentUser, currentUserData, user, appDispatch } = props
 
-  //const [user, setUser] = useState([])
+  const { selectedUser, appDispatch } = props
 
   const getUser = async () => {
     try {

@@ -1,10 +1,7 @@
-import axios from 'axios'
 import LoginNav from '../components/LoginNav'
 import PublicNav from '../components/PublicNav'
 
 const Nav = (props) => {
-  const { currentUser, currentUserData, appDispatch } = props
-
   return props.authenticated ? (
     <div>
       <LoginNav

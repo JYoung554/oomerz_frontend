@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const LoginNav = (props) => {
-  const { currentUser, currentUserData } = props
+  const { currentUser } = props
   const history = useNavigate()
   const profile = currentUser.handle
 

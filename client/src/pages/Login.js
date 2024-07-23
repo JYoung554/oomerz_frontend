@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import LoginForm from '../components/LoginForm'
@@ -7,11 +7,7 @@ const {
   LOGIN_FORM,
   SUBMIT_LOGIN_FORM,
   SET_CURRENT_USER,
-  SET_CURRENT_USER_DATA,
   SET_AUTHENTICATED,
-  PROFILE_CARDS_BY_HANDLE,
-  GET_PROFILE_CARD,
-  SET_USER,
   RESET_LOGIN
 } = require('../store/types')
 
@@ -45,12 +41,8 @@ const reducer = (state, action) => {
 
 const Login = (props) => {
   const [state, dispatch] = useReducer(reducer, iState)
-  const { caption, currentUser, genStatus, triviaTotal, profileCardsByHandle } =
-    props
   const loginForm = state.loginForm
-
   const history = useNavigate()
-
   const handleChange = (e) => {
     dispatch({
       type: LOGIN_FORM,
@@ -63,7 +55,6 @@ const Login = (props) => {
     e.preventDefault()
     try {
       const res = await axios.post(`${BASE_URL}/auth/login`, state.loginForm)
-
       localStorage.setItem('token', res.data.token)
       dispatch({
         type: SUBMIT_LOGIN_FORM,
@@ -73,7 +64,6 @@ const Login = (props) => {
         type: RESET_LOGIN
       })
       props.appDispatch({ type: SET_CURRENT_USER, payload: res.data.user })
-      //props.appDispatch({ type: SET_USER, payload: res.data.user })
       props.appDispatch({ type: SET_AUTHENTICATED, payload: true })
       console.log(selectedUser)
 

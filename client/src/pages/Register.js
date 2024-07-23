@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 import RegisterForm from '../components/RegisterForm'
 import axios from 'axios'

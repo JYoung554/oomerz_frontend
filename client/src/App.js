@@ -32,7 +32,7 @@ import {
 } from './store/types'
 import './App.css'
 import './index.css'
-import { useState, useEffect, useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 
 const iState = {
   authenticated: false,
@@ -112,10 +112,8 @@ const reducer = (state, action) => {
 
 //
 const App = () => {
-  let { selectedUser } = useParams()
   const [state, dispatch] = useReducer(reducer, iState)
   const history = useNavigate()
-  let { handle } = useParams()
   const checkToken = async () => {
     let token = localStorage.getItem('token')
     if (token) {

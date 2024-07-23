@@ -1,34 +1,16 @@
 import React from 'react'
 import axios from 'axios'
-import { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BASE_URL } from '../globals'
-import UserPage from '../pages/UserPage'
-import {
-  PROFILE_CARDS_BY_HANDLE,
-  SET_CURRENT_USER_DATA,
-  SET_PROFILE_CARD,
-  SET_CURRENT_USER,
-  SET_USER,
-  SET_CARD,
-  GET_USER,
-  SET_USER_PROFILES
-} from '../store/types'
+import { PROFILE_CARDS_BY_HANDLE, SET_USER } from '../store/types'
 
 const Users = (props) => {
   const history = useNavigate()
-  const handle = useParams()
-  const {
-    user,
-    currentUserData,
-    selectedUser,
-    currentUser,
-    profileCard,
-    appDispatch
-  } = props
+  const { user, currentUserData, selectedUser, currentUser, appDispatch } =
+    props
 
   const [profile, setProfile] = useState(user)
-  //const [profileCards, setProfileCards] = useState([])
 
   const [users, setUsers] = useState([])
 
@@ -59,7 +41,6 @@ const Users = (props) => {
 
   useEffect(() => {
     getUsers()
-    //console.log(profileCards)
   }, [selectedUser])
 
   return (

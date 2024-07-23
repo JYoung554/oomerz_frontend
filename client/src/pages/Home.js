@@ -1,22 +1,19 @@
 import React from 'react'
 import axios from 'axios'
-import { useParams, useNavigate } from 'react-router-dom'
-import { Button, Grid, Card, Icon, Image } from 'semantic-ui-react'
+import { useNavigate } from 'react-router-dom'
+import { Grid, Card } from 'semantic-ui-react'
 import { useState, useReducer, useEffect } from 'react'
 import { BASE_URL } from '../globals'
 
 const {
   SET_CURRENT_USER_DATA,
-  SET_USER,
   SET_PROFILE_CARD,
-  ADD_CURRENT_USER_PROFILE_CARD,
   CAPTION_FORM,
   SUBMIT_CAPTION,
   PROFILE_CARDS_BY_HANDLE,
   SET_CARD,
   SELECT_COMMENT,
   SET_USER_PROFILE_CARDS,
-  UPDATE_PROFILE_CARD,
   SET_CURRENT_USER_SELECTED_PROFILE_CARD
 } = require('../store/types')
 
@@ -50,7 +47,6 @@ const Home = (props) => {
     profileCard,
     selectedProfileCard,
     profileCardsByHandle,
-    selectedUser,
     triviaTotal,
     logOut,
     appDispatch,
@@ -85,7 +81,6 @@ const Home = (props) => {
   const getProfileCardsByHandle = async () => {
     const res = await axios.get(`${BASE_URL}/home/${currentUser.handle}`)
     dispatch({ type: SET_PROFILE_CARD, payload: res.data.ProfileCards })
-    //appDispatch({ type: SET_CARD, payload: res.data.ProfileCards })
     console.log(res.data)
     history('/profile')
   }

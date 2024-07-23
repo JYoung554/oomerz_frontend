@@ -1,16 +1,10 @@
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 import {
-  SET_USER,
   ANSWER_FORM,
   SUBMIT_ANSWER_FORM,
   CLICKED_POST_ANSWER,
-  SET_TRIVIA_TOTAL,
-  SET_GEN_STATUS,
-  UPDATE_PROFILE_CARD,
   SET_CARD,
-  ADD_TRIVIA,
-  SET_CURRENT_USER_DATA,
   SET_CURRENT_USER_SELECTED_PROFILE_CARD
 } from '../store/types'
 
@@ -23,7 +17,6 @@ const iState = {
   addTrivia: 0,
   submittedAnswer: false,
   clickedPostAnswer: false
-  //genStatus: 'a'
 }
 
 const reducer = (state, action) => {
@@ -55,7 +48,6 @@ const Trivia = (props) => {
   const [trivia, setTriviaQuestions] = useState(0)
   const [user, setUser] = useState('')
   let [triviaTotalNumber, setTriviaTotalNumber] = useState(triviaTotal)
-  //const [triviaEnd, setTriviaEnd] = useState(triviaEnd ? false : true)
   const [boomer, setBoomer] = useState(0)
   const [genX, setGenX] = useState(0)
   const [millennial, setMillennial] = useState(0)
@@ -63,7 +55,6 @@ const Trivia = (props) => {
   const [genText, setGenText] = useState(
     currentUserSelectedProfileCard.genStatus
   )
-  let [addTrivia, setAddTrivia] = useState(0)
   const [score, setScore] = useState(0)
   const [showScore, setShowScore] = useState(false)
   const [state, dispatch] = useReducer(reducer, iState)
@@ -171,7 +162,6 @@ const Trivia = (props) => {
       console.log('done')
       setShowScore(true)
       addTriviaFunction()
-
     }
   }
 
@@ -180,7 +170,6 @@ const Trivia = (props) => {
   }
 
   useEffect(() => {
-    //resetGenStatus()
     console.log(profileCard)
     console.log(triviaTotalNumber)
   }, [
